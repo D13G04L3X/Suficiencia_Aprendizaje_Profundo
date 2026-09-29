@@ -1,0 +1,10 @@
+# Google Colab ya trae instaladas estas librerías.
+# Este archivo sirve para reproducir el entorno en ejecución local.
+tensorflow>=2.15
+tensorflow-datasets
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+jupyter
