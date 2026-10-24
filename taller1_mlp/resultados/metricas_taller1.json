@@ -1,0 +1,28 @@
+{
+  "dataset": "MNIST",
+  "conjuntos": {
+    "entrenamiento": 50000,
+    "validacion": 10000,
+    "prueba": 10000
+  },
+  "arquitectura": "MLP 784-512-256-128-10 (ReLU + Dropout 0.3/0.3/0.2, salida softmax)",
+  "num_parametros": 567434,
+  "hiperparametros": {
+    "optimizador": "Adam",
+    "tasa_aprendizaje": 0.001,
+    "perdida": "sparse_categorical_crossentropy",
+    "batch_size": 128,
+    "epocas_maximas": 30,
+    "paciencia_early_stopping": 5,
+    "semilla": 42
+  },
+  "epocas_entrenadas": 12,
+  "mejor_epoca": 7,
+  "train_accuracy": 0.9926999807357788,
+  "val_accuracy": 0.9807000160217285,
+  "test_loss": 0.07540952414274216,
+  "test_accuracy": 0.9803000092506409,
+  "errores_prueba": 197,
+  "meta_accuracy": 0.9,
+  "cumple_meta": true
+}
