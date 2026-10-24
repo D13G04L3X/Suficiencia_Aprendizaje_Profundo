@@ -47,26 +47,20 @@ Suficiencia_Aprendizaje_Profundo/
 2. Activar la GPU: **Entorno de ejecución → Cambiar tipo de entorno de ejecución → GPU (T4)**.
 3. Ejecutar todas las celdas: **Entorno de ejecución → Ejecutar todas**.
 
-La primera celda de cada notebook monta Google Drive y localiza el repositorio en:
-
-```
-/content/drive/MyDrive/Introducción al aprendizaje profundo/Suficiencia_Aprendizaje_Profundo
-```
-
-Si el repositorio se clona en otra ubicación, basta con modificar la variable `REPO_DIR` de esa celda.
+La primera celda de cada notebook monta Google Drive y busca automáticamente la carpeta del proyecto dentro de "Mi unidad" (hasta cuatro niveles de subcarpetas), así que no es necesario modificar ninguna ruta.
 
 Los datasets se descargan automáticamente mediante `keras.datasets` y `tensorflow_datasets`; no se requiere descarga manual.
 
 ### Opción local
 
 ```bash
-python -m venv .venv
+py -3.12 -m venv .venv
 .venv\Scripts\activate          # Windows
 pip install -r requirements.txt
 jupyter notebook
 ```
 
-Ejecutar cada notebook desde su propia carpeta. Sin GPU, el Taller 2 y el proyecto final pueden tardar considerablemente.
+Se requiere Python 3.12. La carpeta del proyecto se detecta automáticamente desde el directorio de ejecución. Sin GPU, el Taller 2 y el proyecto final pueden tardar considerablemente.
 
 ## Datasets
 
