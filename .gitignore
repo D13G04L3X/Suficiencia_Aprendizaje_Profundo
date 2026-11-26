@@ -24,6 +24,7 @@ tensorflow_datasets/
 # Los modelos finales (.keras) sí se versionan si pesan < 100 MB (límite de GitHub).
 # Excepción: los 4 modelos del Taller 2 suman ~130 MB por ejecución; se conservan en Drive.
 taller2_cnn_tl_da/modelos/*.keras
+proyecto_final/modelos/*.keras
 checkpoints/
 *.ckpt*
 logs/
