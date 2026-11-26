@@ -1,0 +1,143 @@
+{
+  "dataset": "Oxford-IIIT Pet (trimaps)",
+  "tarea": "Segmentación semántica en 3 clases",
+  "clases": [
+    "Mascota",
+    "Fondo",
+    "Contorno"
+  ],
+  "conjuntos": {
+    "entrenamiento": 3128,
+    "validacion": 552,
+    "prueba": 3669
+  },
+  "arquitectura": "U-Net con encoder MobileNetV2 (ImageNet)",
+  "configuracion": {
+    "tam_imagen": 160,
+    "batch_size": 32,
+    "perdida": "entropía cruzada + Dice",
+    "optimizador": "Adam",
+    "lr_fase1": 0.001,
+    "lr_fase2": 0.0001,
+    "epocas_maximas": {
+      "fase1": 25,
+      "fase2": 20
+    },
+    "semilla": 42
+  },
+  "fases": {
+    "fase1": {
+      "descripcion": "Fase 1 – encoder congelado",
+      "archivo": "modelos/unet_fase1_encoder_congelado.keras",
+      "parametros_entrenables": 3569379,
+      "epocas_entrenadas": 25,
+      "mejor_epoca": 20,
+      "tiempo_entrenamiento_s": 331.9,
+      "validacion": {
+        "iou_por_clase": {
+          "Mascota": 0.8789,
+          "Fondo": 0.9354,
+          "Contorno": 0.5602
+        },
+        "dice_por_clase": {
+          "Mascota": 0.9356,
+          "Fondo": 0.9666,
+          "Contorno": 0.7181
+        },
+        "mean_iou": 0.7914995100194551,
+        "mean_dice": 0.8734259758160912,
+        "pixel_accuracy": 0.9287598363903985
+      },
+      "prueba": {
+        "iou_por_clase": {
+          "Mascota": 0.8648,
+          "Fondo": 0.9297,
+          "Contorno": 0.5742
+        },
+        "dice_por_clase": {
+          "Mascota": 0.9275,
+          "Fondo": 0.9636,
+          "Contorno": 0.7295
+        },
+        "mean_iou": 0.7895845495573593,
+        "mean_dice": 0.8735389357373836,
+        "pixel_accuracy": 0.9246727969985009
+      }
+    },
+    "fase2": {
+      "descripcion": "Fase 2 – fine-tuning",
+      "archivo": "modelos/unet_fase2_fine_tuning.keras",
+      "parametros_entrenables": 5349539,
+      "epocas_entrenadas": 14,
+      "mejor_epoca": 9,
+      "tiempo_entrenamiento_s": 240.4,
+      "validacion": {
+        "iou_por_clase": {
+          "Mascota": 0.8814,
+          "Fondo": 0.9375,
+          "Contorno": 0.5603
+        },
+        "dice_por_clase": {
+          "Mascota": 0.9369,
+          "Fondo": 0.9678,
+          "Contorno": 0.7182
+        },
+        "mean_iou": 0.7930670305243749,
+        "mean_dice": 0.8743009773508733,
+        "pixel_accuracy": 0.9303316774230073
+      },
+      "prueba": {
+        "iou_por_clase": {
+          "Mascota": 0.8667,
+          "Fondo": 0.9305,
+          "Contorno": 0.5664
+        },
+        "dice_por_clase": {
+          "Mascota": 0.9286,
+          "Fondo": 0.964,
+          "Contorno": 0.7232
+        },
+        "mean_iou": 0.7878701427039806,
+        "mean_dice": 0.8719287910608453,
+        "pixel_accuracy": 0.9249678258721723
+      }
+    }
+  },
+  "modelo_seleccionado": "fase2",
+  "criterio_seleccion": "mayor mIoU de validación",
+  "prueba_modelo_seleccionado": {
+    "iou_por_clase": {
+      "Mascota": 0.8667,
+      "Fondo": 0.9305,
+      "Contorno": 0.5664
+    },
+    "dice_por_clase": {
+      "Mascota": 0.9286,
+      "Fondo": 0.964,
+      "Contorno": 0.7232
+    },
+    "mean_iou": 0.7878701427039806,
+    "mean_dice": 0.8719287910608453,
+    "pixel_accuracy": 0.9249678258721723
+  },
+  "modelo_trivial_todo_fondo": {
+    "iou_por_clase": {
+      "Mascota": 0.0,
+      "Fondo": 0.5772,
+      "Contorno": 0.0
+    },
+    "dice_por_clase": {
+      "Mascota": 0.0,
+      "Fondo": 0.7319,
+      "Contorno": 0.0
+    },
+    "mean_iou": 0.1923963159807395,
+    "mean_dice": 0.24397370553700848,
+    "pixel_accuracy": 0.5771889479422185
+  },
+  "iou_mascota_por_imagen": {
+    "media": 0.8505174294416639,
+    "mediana": 0.8774075206358911,
+    "porcentaje_imagenes_iou_mayor_0_9": 0.3592259471245571
+  }
+}
